@@ -11,9 +11,10 @@ struct SCC { // 0-base
       else if (instack[v] && dfn[v] < dfn[u])
         low[u] = min(low[u], dfn[v]);
     if (low[u] == dfn[u]) {
+      nscc++;
       for (; stk.back() != u; stk.pop_back())
         bln[stk.back()] = nscc, instack[stk.back()] = 0;
-      instack[u] = 0, bln[u] = nscc++, stk.pop_back();
+      instack[u] = 0, bln[u] = nscc, stk.pop_back();
     }
   }
   SCC(int _n): n(_n), dft(), nscc(), low(n), dfn(n), bln(n), instack(n), G(n) {}

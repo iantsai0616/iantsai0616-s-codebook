@@ -11,9 +11,10 @@ struct ECC { // 0-base
         low[u] = min(low[u], dfn[v]);
     if (low[u] == dfn[u]) {
       if (f != -1) is_bridge[f] = 1;
+      necc++;
       for (; stk.back() != u; stk.pop_back())
         bln[stk.back()] = necc;
-      bln[u] = necc++, stk.pop_back();
+      bln[u] = necc, stk.pop_back();
     }
   }
   ECC(int _n): n(_n), dft(), ecnt(), necc(), low(n), dfn(n), bln(n), G(n) {}
